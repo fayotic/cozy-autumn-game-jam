@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://bdxbaimm7fuaj"]
+
+[ext_resource type="Script" uid="uid://cummr2a0o538l" path="res://entities/player/cat.gd" id="1_dc4ry"]
+[ext_resource type="SpriteFrames" uid="uid://dj0m7wm2trs3h" path="res://assets/art/cat/animations/cat animations.tres" id="1_f57o4"]
+[ext_resource type="Script" uid="uid://fr62dxigeego" path="res://entities/player/animation_handler.gd" id="3_hyc1n"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qvfpm"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_qvfpm"]
+radius = 0.93741906
+
+[node name="Cat" type="CharacterBody3D" unique_id=2080771299]
+script = ExtResource("1_dc4ry")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=320240978]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_qvfpm")
+debug_color = Color(2.5737882, 0, 1.506561, 0.41960785)
+
+[node name="CatSprite3D" type="AnimatedSprite3D" parent="." unique_id=1626317223]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+pixel_size = 0.0034
+billboard = 2
+texture_filter = 0
+sprite_frames = ExtResource("1_f57o4")
+animation = &"walk_back_right"
+frame_progress = 0.43976295
+
+[node name="InteractionArea" type="Area3D" parent="." unique_id=2057740022]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea" unique_id=800244031]
+shape = SubResource("SphereShape3D_qvfpm")
+
+[node name="AnimationHandler" type="Node3D" parent="." unique_id=42846317]
+script = ExtResource("3_hyc1n")
