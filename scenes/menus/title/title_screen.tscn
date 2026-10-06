@@ -1,0 +1,119 @@
+[gd_scene format=3 uid="uid://b00r8xf6qis7l"]
+
+[ext_resource type="Script" uid="uid://yuuqk0l8b0hq" path="res://scenes/menus/title/title_screen.gd" id="1_34we3"]
+[ext_resource type="StyleBox" uid="uid://cxnuaxexcif84" path="res://assets/styles/ui/menu buttons/ui_button_normal.tres" id="2_5okwd"]
+[ext_resource type="StyleBox" uid="uid://37qedf58bvv7" path="res://assets/styles/ui/menu buttons/ui_button_hover.tres" id="3_kj1pq"]
+
+[sub_resource type="Gradient" id="Gradient_ynr0n"]
+offsets = PackedFloat32Array(0, 0.26506025, 0.72289157)
+colors = PackedColorArray(0.0627451, 0.043137256, 0.16470589, 1, 0.5921569, 0.25490198, 0.2, 1, 1, 0.7019608, 0.4745098, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0qb2x"]
+gradient = SubResource("Gradient_ynr0n")
+fill_from = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0qb2x"]
+bg_color = Color(0.68235296, 0.35686275, 0.2627451, 1)
+border_width_bottom = 262
+border_color = Color(0.09019608, 0.03137255, 0.09019608, 1)
+border_blend = true
+
+[node name="TitleScreen" type="Control" unique_id=785725202]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_34we3")
+
+[node name="BG" type="TextureRect" parent="." unique_id=1719115855]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_0qb2x")
+
+[node name="BG2" type="Panel" parent="." unique_id=1728066297]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0qb2x")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="." unique_id=149616750]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -264.0
+offset_top = 72.0
+offset_right = 264.0
+offset_bottom = 112.0
+grow_horizontal = 2
+
+[node name="Titlelbl" type="Label" parent="VBoxContainer2" unique_id=1373188052]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.09019608, 0.09019608, 0.09019608, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 55
+text = "Generic game title"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Titlelbl2" type="Label" parent="VBoxContainer2" unique_id=1670594212]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.09019608, 0.09019608, 0.09019608, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 16
+text = "(excuse the awful temporary mismatched menus)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1915545188]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -179.0
+offset_top = -135.0
+offset_right = 179.0
+offset_bottom = 135.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 18
+alignment = 1
+
+[node name="Playbtn" type="Button" parent="VBoxContainer" unique_id=529078236]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = ExtResource("2_5okwd")
+theme_override_styles/hover = ExtResource("3_kj1pq")
+text = "PLAY"
+
+[node name="Settingsbtn" type="Button" parent="VBoxContainer" unique_id=1977634268]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = ExtResource("2_5okwd")
+theme_override_styles/hover = ExtResource("3_kj1pq")
+text = "OPTIONS"
+
+[node name="Quitbtn" type="Button" parent="VBoxContainer" unique_id=860366972]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = ExtResource("2_5okwd")
+theme_override_styles/hover = ExtResource("3_kj1pq")
+text = "QUIT"
+
+[connection signal="pressed" from="VBoxContainer/Playbtn" to="." method="_on_playbtn_pressed"]
+[connection signal="pressed" from="VBoxContainer/Settingsbtn" to="." method="_on_settingsbtn_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quitbtn" to="." method="_on_quitbtn_pressed"]

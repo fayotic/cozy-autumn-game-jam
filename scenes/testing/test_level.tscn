@@ -1,6 +1,12 @@
 [gd_scene format=3 uid="uid://coikqu6xwvaaw"]
 
 [ext_resource type="PackedScene" uid="uid://bdxbaimm7fuaj" path="res://entities/player/cat.tscn" id="1_gifr5"]
+[ext_resource type="Texture2D" uid="uid://doojtkcg617xa" path="res://assets/art/ref/color_reference.png" id="1_p2a5o"]
+[ext_resource type="Script" uid="uid://bse7kpgjr1dol" path="res://scenes/testing/test_level.gd" id="1_uk8sb"]
+[ext_resource type="Script" uid="uid://bmrv0rgh40nwj" path="res://components/camera/level_camera.gd" id="2_6gmxw"]
+[ext_resource type="Texture2D" uid="uid://0kl2uspvb4ty" path="res://assets/art/miara/Theif_Miara.png" id="3_dtbcn"]
+[ext_resource type="PackedScene" uid="uid://dq6sbfh34qhwh" path="res://components/game ui/game_ui.tscn" id="3_gcg1t"]
+[ext_resource type="PackedScene" uid="uid://53sdrlvvkclo" path="res://components/travel trigger/travel_trigger.tscn" id="5_l0mtu"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ltn37"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -10,10 +16,141 @@ ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 sky_material = SubResource("ProceduralSkyMaterial_ltn37")
 
 [sub_resource type="Environment" id="Environment_fxn3n"]
+background_mode = 1
 background_energy_multiplier = 2.54
 sky = SubResource("Sky_bbh8s")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6gmxw"]
+albedo_texture = ExtResource("1_p2a5o")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b4aag"]
+albedo_color = Color(0.5294118, 0.4117647, 0.4627451, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l0mtu"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_uk8sb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Cat:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(4.3873696, 0.605, 0.9922621)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CSGBox3D2/Sprite3D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_dtbcn"]
+resource_name = "change_room_ex_1"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Entities/GameUI/ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.19999999, 0.8000001, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CSGBox3D2:material:albedo_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.5294118, 0.4117647, 0.4627451, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CSGBox3D2:material_override:albedo_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.20000002, 0.8000001, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0.4439575, 0.29914963, 0.113022484, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.20000002, 0.7666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-11, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CSGBox3D:material_override:albedo_color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.23333335),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Cat:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.2, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(4.3873696, 0.605, 0.9922621), Vector3(-4.6796184, 0.605, 0.9922621)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CSGBox3D2/Sprite3D:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.23333333, 0.73333335),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hi5vw"]
+_data = {
+&"RESET": SubResource("Animation_uk8sb"),
+&"change_room_ex_1": SubResource("Animation_dtbcn")
+}
+
 [node name="Dev" type="Node3D" unique_id=560521942]
+script = ExtResource("1_uk8sb")
 
 [node name="Lighting" type="Node3D" parent="." unique_id=769142723]
 
@@ -28,13 +165,65 @@ shadow_enabled = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Build" unique_id=518552781]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
+material_override = SubResource("StandardMaterial3D_6gmxw")
 use_collision = true
 size = Vector3(11, 11, 11)
+material = SubResource("StandardMaterial3D_b4aag")
+
+[node name="Label3D" type="Label3D" parent="Build/CSGBox3D" unique_id=1063381547]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.133404, 0)
+pixel_size = 0.002
+text = "ROOM 1"
+font_size = 416
+outline_size = 33
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Build" unique_id=1935637517]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, -5, 0)
+material_override = SubResource("StandardMaterial3D_l0mtu")
+use_collision = true
+size = Vector3(11, 11, 11)
+material = SubResource("StandardMaterial3D_b4aag")
+
+[node name="Label3D" type="Label3D" parent="Build/CSGBox3D2" unique_id=610303402]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.133404, 0)
+pixel_size = 0.002
+text = "ROOM 2"
+font_size = 416
+outline_size = 33
+
+[node name="Sprite3D" type="Sprite3D" parent="Build/CSGBox3D2" unique_id=295853349]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.63511, 6.7412806, 3.6094978)
+pixel_size = 0.0025
+billboard = 2
+texture_filter = 0
+texture = ExtResource("3_dtbcn")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Build" unique_id=696308704]
+libraries/ = SubResource("AnimationLibrary_hi5vw")
+
+[node name="TravelTrigger" parent="Build" unique_id=235046712 instance=ExtResource("5_l0mtu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.432927, 0.49999952, 0.9166117)
 
 [node name="Entities" type="Node3D" parent="." unique_id=1030774510]
 
-[node name="Camera3D" type="Camera3D" parent="Entities" unique_id=1040454793]
-transform = Transform3D(0.7071068, -0.22297613, 0.6710303, 0, 0.94898015, 0.31533587, -0.70710677, -0.22297613, 0.67103034, 7.927368, 4.786969, 8.000028)
+[node name="Camera3D" type="Camera3D" parent="Entities" unique_id=1040454793 node_paths=PackedStringArray("target")]
+transform = Transform3D(0.7071068, -0.22297612, 0.6710303, 0, 0.94898015, 0.31533587, -0.70710677, -0.22297615, 0.67103034, 7.3365917, 4.0096626, 7.320375)
+script = ExtResource("2_6gmxw")
+follow_speed = 1.425
+max_follow_shift = 3.575
+target = NodePath("../../Cat")
+
+[node name="GameUI" parent="Entities" unique_id=1598872657 instance=ExtResource("3_gcg1t")]
+
+[node name="ColorRect" type="ColorRect" parent="Entities/GameUI" unique_id=111425623]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
 
 [node name="Cat" parent="." unique_id=2080771299 instance=ExtResource("1_gifr5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1736917, 0.605, -0.43590546)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3873696, 0.605, 0.9922621)
