@@ -1,25 +1,58 @@
 [gd_scene format=3 uid="uid://b01epfmdlhwnq"]
 
 [ext_resource type="Script" uid="uid://yt4v7olgd62q" path="res://scenes/menus/settings/settings_menu.gd" id="1_2k2k4"]
+[ext_resource type="Theme" uid="uid://dw1lw5t5swsdo" path="res://themes/settings_menu.tres" id="1_blnbg"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2k2k4"]
-bg_color = Color(0, 0, 0, 0.21960784)
-border_width_left = 6
-border_width_top = 4
-border_color = Color(0, 0, 0, 0.41568628)
-corner_radius_top_left = 29
-corner_radius_top_right = 29
-corner_radius_bottom_right = 29
-corner_radius_bottom_left = 29
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hx1py"]
+bg_color = Color(0.16470589, 0.11372549, 0.07450981, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.47843137, 0.32156864, 0.1882353, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
 
-[node name="SettingsMenu" type="Control" unique_id=1224444288]
+[sub_resource type="Theme" id="Theme_kq2y2"]
+
+[sub_resource type="Gradient" id="Gradient_blnbg"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ogv22"]
+gradient = SubResource("Gradient_blnbg")
+width = 6
+height = 14
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_blnbg"]
+thickness = 9
+
+[node name="SettingsMenu" type="Control" unique_id=1224444288 node_paths=PackedStringArray("back_btn", "volume_slider", "music_slider", "sfx_slider", "resolution_box", "fullscreen_toggle", "vsync_toggle", "fps_box")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_blnbg")
 script = ExtResource("1_2k2k4")
+back_btn = NodePath("BackBtn")
+volume_slider = NodePath("Panel/SettingsHolderVBox/VolVBox/Volslider")
+music_slider = NodePath("Panel/SettingsHolderVBox/MusicVBox/Musicslider")
+sfx_slider = NodePath("Panel/SettingsHolderVBox/SFXVBox/SFXslider")
+resolution_box = NodePath("Panel/SettingsHolderVBox/ResVBox/resbox")
+fullscreen_toggle = NodePath("Panel/SettingsHolderVBox/FullscreenRow/FullscreenToggle")
+vsync_toggle = NodePath("Panel/SettingsHolderVBox/VsyncRow/VsyncToggle")
+fps_box = NodePath("Panel/SettingsHolderVBox/FpsRow/FpsDrop")
+
+[node name="Background" type="ColorRect" parent="." unique_id=869077311]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.09803922, 0.0627451, 0.03529412, 1)
 
 [node name="Panel" type="Panel" parent="." unique_id=1067931692]
 layout_mode = 1
@@ -28,13 +61,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -249.0
-offset_top = -217.0
-offset_right = 249.0
-offset_bottom = 217.0
+offset_left = -179.0
+offset_top = -232.0
+offset_right = 179.0
+offset_bottom = 232.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_2k2k4")
+theme_override_styles/panel = SubResource("StyleBoxFlat_hx1py")
 
 [node name="Label" type="Label" parent="Panel" unique_id=210103986]
 layout_mode = 1
@@ -42,10 +75,11 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -77.0
-offset_top = -62.0
+offset_top = -82.0
 offset_right = 77.0
-offset_bottom = -13.0
+offset_bottom = -33.0
 grow_horizontal = 2
+theme_override_colors/font_color = Color(0.9137255, 0.72156864, 0.44705883, 1)
 theme_override_font_sizes/font_size = 35
 text = "OPTIONS"
 horizontal_alignment = 1
@@ -62,48 +96,72 @@ offset_right = -48.0
 offset_bottom = -30.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 15
+theme_override_constants/separation = 14
+alignment = 1
 
 [node name="VolVBox" type="VBoxContainer" parent="Panel/SettingsHolderVBox" unique_id=363192511]
 layout_mode = 2
-theme_override_constants/separation = 11
+theme_override_constants/separation = 6
 
 [node name="Vollbl" type="Label" parent="Panel/SettingsHolderVBox/VolVBox" unique_id=366729127]
 layout_mode = 2
 text = "Volume"
 
 [node name="Volslider" type="HSlider" parent="Panel/SettingsHolderVBox/VolVBox" unique_id=2022952362]
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
+theme = SubResource("Theme_kq2y2")
+theme_override_icons/grabber = SubResource("GradientTexture2D_ogv22")
+theme_override_icons/grabber_highlight = SubResource("GradientTexture2D_ogv22")
+theme_override_styles/slider = SubResource("StyleBoxLine_blnbg")
+max_value = 1.0
+step = 0.05
 
 [node name="MusicVBox" type="VBoxContainer" parent="Panel/SettingsHolderVBox" unique_id=6253843]
 layout_mode = 2
-theme_override_constants/separation = 11
+theme_override_constants/separation = 6
 
 [node name="Musiclbl" type="Label" parent="Panel/SettingsHolderVBox/MusicVBox" unique_id=902140735]
 layout_mode = 2
 text = "Music Volume"
 
 [node name="Musicslider" type="HSlider" parent="Panel/SettingsHolderVBox/MusicVBox" unique_id=1443857445]
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
+theme = SubResource("Theme_kq2y2")
+theme_override_icons/grabber = SubResource("GradientTexture2D_ogv22")
+theme_override_icons/grabber_highlight = SubResource("GradientTexture2D_ogv22")
+theme_override_styles/slider = SubResource("StyleBoxLine_blnbg")
+max_value = 1.0
+step = 0.05
 
 [node name="SFXVBox" type="VBoxContainer" parent="Panel/SettingsHolderVBox" unique_id=1155705658]
 layout_mode = 2
-theme_override_constants/separation = 11
+theme_override_constants/separation = 6
 
 [node name="SFXlbl" type="Label" parent="Panel/SettingsHolderVBox/SFXVBox" unique_id=573426958]
 layout_mode = 2
 text = "SFX Volume"
 
 [node name="SFXslider" type="HSlider" parent="Panel/SettingsHolderVBox/SFXVBox" unique_id=1432228756]
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
+theme = SubResource("Theme_kq2y2")
+theme_override_icons/grabber = SubResource("GradientTexture2D_ogv22")
+theme_override_icons/grabber_highlight = SubResource("GradientTexture2D_ogv22")
+theme_override_styles/slider = SubResource("StyleBoxLine_blnbg")
+max_value = 1.0
+step = 0.05
 
 [node name="ResVBox" type="VBoxContainer" parent="Panel/SettingsHolderVBox" unique_id=1510002277]
 layout_mode = 2
+theme_override_constants/separation = 6
 
 [node name="Resolutionlbl" type="Label" parent="Panel/SettingsHolderVBox/ResVBox" unique_id=1975374158]
 layout_mode = 2
 
 [node name="resbox" type="OptionButton" parent="Panel/SettingsHolderVBox/ResVBox" unique_id=930136418]
+custom_minimum_size = Vector2(0, 36)
 layout_mode = 2
 selected = 1
 item_count = 2
@@ -112,25 +170,60 @@ popup/item_0/id = 0
 popup/item_1/text = "(Default) 1152x648"
 popup/item_1/id = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/SettingsHolderVBox" unique_id=887389942]
+[node name="FullscreenRow" type="HBoxContainer" parent="Panel/SettingsHolderVBox" unique_id=980670971]
 layout_mode = 2
+theme_override_constants/separation = 8
 
-[node name="Fullscreenlbl" type="Label" parent="Panel/SettingsHolderVBox/VBoxContainer" unique_id=293726411]
+[node name="Fullscreenlbl" type="Label" parent="Panel/SettingsHolderVBox/FullscreenRow" unique_id=293726411]
 layout_mode = 2
 text = "Fullscreen"
 
+[node name="FullscreenToggle" type="CheckBox" parent="Panel/SettingsHolderVBox/FullscreenRow" unique_id=1020024530]
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="VsyncRow" type="HBoxContainer" parent="Panel/SettingsHolderVBox" unique_id=618018631]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Vsynclbl" type="Label" parent="Panel/SettingsHolderVBox/VsyncRow" unique_id=360361941]
+layout_mode = 2
+text = "Vsync"
+
+[node name="VsyncToggle" type="CheckBox" parent="Panel/SettingsHolderVBox/VsyncRow" unique_id=484857860]
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="FpsRow" type="HBoxContainer" parent="Panel/SettingsHolderVBox" unique_id=1700866164]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Fpslbl" type="Label" parent="Panel/SettingsHolderVBox/FpsRow" unique_id=348494436]
+layout_mode = 2
+text = "FPS Cap"
+
+[node name="FpsDrop" type="OptionButton" parent="Panel/SettingsHolderVBox/FpsRow" unique_id=1472611504]
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+size_flags_horizontal = 3
+
 [node name="BackBtn" type="Button" parent="." unique_id=1205001553]
+custom_minimum_size = Vector2(150, 46)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -43.0
-offset_top = -91.0
-offset_right = 43.0
-offset_bottom = -36.0
+offset_left = -75.0
+offset_top = -72.0
+offset_right = 75.0
+offset_bottom = -26.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_font_sizes/font_size = 34
+theme_override_font_sizes/font_size = 20
 text = "Back"

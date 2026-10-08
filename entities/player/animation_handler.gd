@@ -10,7 +10,7 @@ var last_direction: Vector2 = Vector2.RIGHT
 @onready var sprite: AnimatedSprite3D = $"../CatSprite3D"
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if animations_enabled:
 		_handle_animations()
 

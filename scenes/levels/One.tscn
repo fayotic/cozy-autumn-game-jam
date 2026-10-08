@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://rotqtao13hci"]
+
+[ext_resource type="Texture2D" uid="uid://bil6y5xhb3uwq" path="res://assets/textures/plank/plank.png" id="1_6y6ag"]
+[ext_resource type="PackedScene" uid="uid://bdxbaimm7fuaj" path="res://entities/player/cat.tscn" id="2_roghd"]
+[ext_resource type="PackedScene" uid="uid://53sdrlvvkclo" path="res://components/travel trigger/travel_trigger.tscn" id="4_514h1"]
+[ext_resource type="Script" uid="uid://bmrv0rgh40nwj" path="res://components/camera/level_camera.gd" id="4_rcjcm"]
+[ext_resource type="PackedScene" uid="uid://coikqu6xwvaaw" path="res://scenes/testing/test_level.tscn" id="5_514h1"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6y6ag"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Sky" id="Sky_rcjcm"]
+sky_material = SubResource("ProceduralSkyMaterial_6y6ag")
+
+[sub_resource type="Environment" id="Environment_514h1"]
+background_mode = 2
+sky = SubResource("Sky_rcjcm")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qvfpm"]
+albedo_texture = ExtResource("1_6y6ag")
+uv1_scale = Vector3(0.072, 10.812, 0.12)
+uv1_offset = Vector3(0.427, 0, 0.253)
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_514h1"]
+size = Vector3(0.74902344, 2, 1)
+
+[node name="One" type="Node3D" unique_id=370668894]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=200983248]
+environment = SubResource("Environment_514h1")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1796375644]
+transform = Transform3D(0.3944646, -0.6714533, -0.6273341, 0.84655124, -2.3267889e-08, 0.53230727, -0.35741946, -0.74104685, 0.5684196, 0, 2, 0)
+light_energy = 1.795
+shadow_enabled = true
+
+[node name="Build" type="Node3D" parent="." unique_id=1272209710]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Build" unique_id=374736179]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2094116, -0.1844043, 2.1262817)
+use_collision = true
+size = Vector3(13.418823, 0.81380856, 7.7633057)
+material = SubResource("StandardMaterial3D_qvfpm")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Build" unique_id=493373231]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.96621704, 2.5, 2.1325684)
+cast_shadow = 0
+use_collision = true
+flip_faces = true
+size = Vector3(12.932434, 6, 7.7348633)
+
+[node name="Cat" parent="Build" unique_id=2080771299 instance=ExtResource("2_roghd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4307742, 0, 2.812749)
+can_interact = true
+
+[node name="Other" type="Node3D" parent="." unique_id=907763423]
+
+[node name="LevelCamera" type="Camera3D" parent="Other" unique_id=1751915271 node_paths=PackedStringArray("target")]
+transform = Transform3D(0.68199915, 0.34616396, -0.644242, 0, 0.8808906, 0.47331995, 0.731353, -0.3228038, 0.60076666, -9.953285, 7.4085836, 11.277507)
+fov = 36.6
+script = ExtResource("4_rcjcm")
+target = NodePath("../../Build/Cat")
+metadata/_custom_type_script = "uid://bmrv0rgh40nwj"
+
+[node name="TravelTrigger" parent="Other" unique_id=235046712 instance=ExtResource("4_514h1")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -3.3727252, 0.080869496, 6.0011873)
+scene_to_request = ExtResource("5_514h1")
+emit_signal_on_touch = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Other/TravelTrigger" unique_id=672600271]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9995, 0)
+shape = SubResource("BoxShape3D_514h1")
+debug_color = Color(1, 0.011764706, 0.3019608, 0.70980394)

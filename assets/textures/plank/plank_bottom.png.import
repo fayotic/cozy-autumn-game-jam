@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://67hv3fjfuee4"
-path.s3tc="res://.godot/imported/Untitled_Artwork.png-9190688a71d1149caaa34ff55d913f48.s3tc.ctex"
+uid="uid://c2wa1e3mc8bry"
+path.s3tc="res://.godot/imported/plank_bottom.png-9ea3b4f2e6040e27179d091ef59d86ac.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/art/Untitled_Artwork.png"
-dest_files=["res://.godot/imported/Untitled_Artwork.png-9190688a71d1149caaa34ff55d913f48.s3tc.ctex"]
+source_file="res://assets/textures/plank/plank_bottom.png"
+dest_files=["res://.godot/imported/plank_bottom.png-9ea3b4f2e6040e27179d091ef59d86ac.s3tc.ctex"]
 
 [params]
 
