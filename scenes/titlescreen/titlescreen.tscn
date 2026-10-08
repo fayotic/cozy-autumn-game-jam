@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://beuj28vb8bvwq"]
+
+[node name="Titlescreen" type="Node2D" unique_id=20486942]
+
+[node name="TitleScreenLayout(w_Labels)" type="Node" parent="." unique_id=215546523]
+
+[node name="Label3" type="Label" parent="TitleScreenLayout(w_Labels)" unique_id=1377486308]
+offset_left = 709.0
+offset_top = 564.0
+offset_right = 1209.0
+offset_bottom = 647.0
+theme_override_font_sizes/font_size = 60
+text = "Settings"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="TitleScreenLayout(w_Labels)" unique_id=415832223]
+offset_left = 285.0
+offset_top = 390.0
+offset_right = 785.0
+offset_bottom = 473.0
+theme_override_font_sizes/font_size = 60
+text = "Play"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="TitleScreenLayout(w_Labels)" unique_id=358696182]
+offset_left = 585.0
+offset_top = 157.0
+offset_right = 1287.0
+offset_bottom = 253.0
+theme_override_font_sizes/font_size = 70
+text = "TITLE OF GAME HERE"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="TitleScreenLayout(w_Labels)" unique_id=498982455]
+offset_left = 1132.0
+offset_top = 779.0
+offset_right = 1632.0
+offset_bottom = 862.0
+theme_override_font_sizes/font_size = 60
+text = "Quit"
+horizontal_alignment = 1
