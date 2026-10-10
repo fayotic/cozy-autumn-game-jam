@@ -1,7 +1,10 @@
 [gd_scene format=3 uid="uid://lfn154n0k540"]
 
-[ext_resource type="Texture2D" uid="uid://cphgqeuvmwbw" path="res://components/journal/journal open.png" id="1_lhqvu"]
-[ext_resource type="Texture2D" uid="uid://b5msa7nnt781p" path="res://components/journal/journal close.png" id="2_mcn13"]
+[ext_resource type="Texture2D" uid="uid://cphgqeuvmwbw" path="res://components/journal/Sprites/journal open.png" id="1_lhqvu"]
+[ext_resource type="Script" uid="uid://c78xydm6rpixj" path="res://components/journal/journal.gd" id="1_xf83b"]
+[ext_resource type="Texture2D" uid="uid://b5msa7nnt781p" path="res://components/journal/Sprites/journal close.png" id="2_mcn13"]
+[ext_resource type="PackedScene" uid="uid://48qyf3evns1" path="res://components/journal/journal_data.tscn" id="4_xf83b"]
+[ext_resource type="FontFile" uid="uid://cucruawkqd44x" path="res://components/fonts/Antique Book.ttf" id="5_srk62"]
 
 [sub_resource type="Animation" id="Animation_xf83b"]
 length = 0.001
@@ -108,6 +111,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_srk62"]
 resource_name = "opening_journal"
+length = 0.9
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -165,6 +169,8 @@ _data = {
 }
 
 [node name="Journal" type="Node2D" unique_id=495663942]
+visible = false
+script = ExtResource("1_xf83b")
 
 [node name="journalopen" type="Sprite2D" parent="." unique_id=858057872]
 modulate = Color(1, 1, 1, 0)
@@ -180,3 +186,36 @@ texture = ExtResource("2_mcn13")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=508276929]
 libraries/ = SubResource("AnimationLibrary_fppqi")
+
+[node name="NextButton" type="Button" parent="." unique_id=2114262112]
+visible = false
+offset_left = 893.0
+offset_top = 291.0
+offset_right = 938.0
+offset_bottom = 322.0
+text = "Next"
+
+[node name="PreviousButton" type="Button" parent="." unique_id=2095099401]
+visible = false
+offset_left = 173.0
+offset_top = 298.0
+offset_right = 248.0
+offset_bottom = 329.0
+text = "Previous"
+
+[node name="JournalData" parent="." unique_id=2073480912 instance=ExtResource("4_xf83b")]
+visible = false
+
+[node name="ItemsFound" type="Label" parent="." unique_id=74316863]
+visible = false
+offset_left = 602.0
+offset_top = 158.0
+offset_right = 798.0
+offset_bottom = 201.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_srk62")
+theme_override_font_sizes/font_size = 40
+text = "Items Found:"
+
+[connection signal="pressed" from="NextButton" to="." method="_on_next_button_pressed"]
+[connection signal="pressed" from="PreviousButton" to="." method="_on_previous_button_pressed"]

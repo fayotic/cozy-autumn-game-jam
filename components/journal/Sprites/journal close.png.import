@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cphgqeuvmwbw"
-path="res://.godot/imported/journal open.png-9baff8e3aa5e526b182a2978fdd89440.ctex"
+uid="uid://b5msa7nnt781p"
+path="res://.godot/imported/journal close.png-8783724d323cd3b9f96aa139b0960fcd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://components/journal/journal open.png"
-dest_files=["res://.godot/imported/journal open.png-9baff8e3aa5e526b182a2978fdd89440.ctex"]
+source_file="res://components/journal/Sprites/journal close.png"
+dest_files=["res://.godot/imported/journal close.png-8783724d323cd3b9f96aa139b0960fcd.ctex"]
 
 [params]
 

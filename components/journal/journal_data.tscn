@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://48qyf3evns1"]
+
+[ext_resource type="Texture2D" uid="uid://drikhn3hpvdqc" path="res://components/journal/Sprites/journal randy id.png" id="1_n8nsu"]
+
+[node name="JournalData" type="Node2D" unique_id=2073480912]
+
+[node name="RandyItems" type="Node2D" parent="." unique_id=1330678453]
+z_index = 1
+position = Vector2(252, 173)
+
+[node name="RandyPlayerCard" type="Sprite2D" parent="RandyItems" unique_id=470116194]
+position = Vector2(146, 115)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("1_n8nsu")
+
+[node name="MiaItems" type="Node2D" parent="." unique_id=1338729837]
+
+[node name="MiaPlayerCard" type="Sprite2D" parent="MiaItems" unique_id=189679091]
+position = Vector2(146, 115)
+
+[node name="GregoryItems" type="Node2D" parent="." unique_id=261524898]
+
+[node name="GregoryPlayerCard" type="Sprite2D" parent="GregoryItems" unique_id=629142939]
+
+[node name="DarenItems" type="Node2D" parent="." unique_id=1488707473]
+
+[node name="DarenPlayerCard" type="Sprite2D" parent="DarenItems" unique_id=985267649]
+
+[node name="StevenItems" type="Node2D" parent="." unique_id=453691843]
+
+[node name="StevenPlayerCard" type="Sprite2D" parent="StevenItems" unique_id=1656785475]
