@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://bmrv0rgh40nwj" path="res://components/camera/level_camera.gd" id="2_6gmxw"]
 [ext_resource type="Texture2D" uid="uid://0kl2uspvb4ty" path="res://assets/art/miara/Theif_Miara.png" id="3_dtbcn"]
 [ext_resource type="PackedScene" uid="uid://dq6sbfh34qhwh" path="res://components/game ui/game_ui.tscn" id="3_gcg1t"]
-[ext_resource type="PackedScene" uid="uid://53sdrlvvkclo" path="res://components/travel trigger/travel_trigger.tscn" id="5_l0mtu"]
+[ext_resource type="PackedScene" uid="uid://b6ghaaiub6rkn" path="res://components/interactable/touch_trigger.tscn" id="4_dtbcn"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ltn37"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -201,7 +201,7 @@ texture = ExtResource("3_dtbcn")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Build" unique_id=696308704]
 libraries/ = SubResource("AnimationLibrary_hi5vw")
 
-[node name="TravelTrigger" parent="Build" unique_id=235046712 instance=ExtResource("5_l0mtu")]
+[node name="TouchTrigger" parent="Build" unique_id=790622220 instance=ExtResource("4_dtbcn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.432927, 0.49999952, 0.9166117)
 
 [node name="Entities" type="Node3D" parent="." unique_id=1030774510]
@@ -209,8 +209,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.432927, 0.49999952, 0.91661
 [node name="Camera3D" type="Camera3D" parent="Entities" unique_id=1040454793 node_paths=PackedStringArray("target")]
 transform = Transform3D(0.7071068, -0.22297612, 0.6710303, 0, 0.94898015, 0.31533587, -0.70710677, -0.22297615, 0.67103034, 7.3365917, 4.0096626, 7.320375)
 script = ExtResource("2_6gmxw")
-follow_speed = 1.425
-max_follow_shift = 3.575
 target = NodePath("../../Cat")
 
 [node name="GameUI" parent="Entities" unique_id=1598872657 instance=ExtResource("3_gcg1t")]
@@ -227,3 +225,4 @@ color = Color(0, 0, 0, 1)
 
 [node name="Cat" parent="." unique_id=2080771299 instance=ExtResource("1_gifr5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3873696, 0.605, 0.9922621)
+can_interact = true

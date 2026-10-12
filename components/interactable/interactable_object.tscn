@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dspyw3f22mouq"]
+
+[ext_resource type="Script" uid="uid://dgd7l6pp7bsec" path="res://components/interactable/interactable_object.gd" id="1_6408o"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6408o"]
+
+[node name="InteractableObject" type="Area3D" unique_id=169144087]
+script = ExtResource("1_6408o")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1046695513]
+shape = SubResource("BoxShape3D_6408o")
+
+[node name="Label3D" type="Label3D" parent="." unique_id=962700698]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+pixel_size = 0.02
+billboard = 1
+no_depth_test = true
+text = "Interact"

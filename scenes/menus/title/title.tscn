@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://dkt1uv7dus5ns"]
+
+[ext_resource type="Script" uid="uid://clfusrdfuxced" path="res://scenes/menus/title/title.gd" id="1_vb8ts"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rffrj"]
+bg_color = Color(0.16470589, 0.11372549, 0.07450981, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.47843137, 0.32156864, 0.1882353, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[node name="Title" type="Control" unique_id=1125116685]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vb8ts")
+
+[node name="Panel" type="Panel" parent="." unique_id=1840714871]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 291.0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rffrj")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=1224495949]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 18.0
+offset_top = 23.0
+offset_right = -18.0
+offset_bottom = -23.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 11
+alignment = 1
+
+[node name="Playbtn" type="Button" parent="Panel/VBoxContainer" unique_id=509258617]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.39957997, 0.20599636, 1.4439226e-07, 1)
+theme_override_font_sizes/font_size = 40
+text = "RESUME"
+
+[node name="Optionsbtn" type="Button" parent="Panel/VBoxContainer" unique_id=2067047282]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.39957997, 0.20599636, 1.4439226e-07, 1)
+theme_override_font_sizes/font_size = 40
+text = "OPTIONS"
+
+[node name="Quitbtn" type="Button" parent="Panel/VBoxContainer" unique_id=292441149]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.39957997, 0.20599636, 1.4439226e-07, 1)
+theme_override_font_sizes/font_size = 40
+text = "QUIT"
+
+[connection signal="pressed" from="Panel/VBoxContainer/Playbtn" to="." method="_on_playbtn_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Optionsbtn" to="." method="_on_optionsbtn_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Quitbtn" to="." method="_on_quitbtn_pressed"]

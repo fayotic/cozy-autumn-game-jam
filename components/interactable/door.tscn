@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://dfpm1mey1ggr6"]
+
+[ext_resource type="Script" uid="uid://dy1wxtvpdwo3p" path="res://components/interactable/door.gd" id="1_jaqgr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_if7xc"]
+size = Vector3(0.74902344, 2, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lor8v"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_vest1"]
+material = SubResource("StandardMaterial3D_lor8v")
+size = Vector2(1, 1.725)
+
+[node name="Door" type="Area3D" unique_id=1577884319]
+script = ExtResource("1_jaqgr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1933435109]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9995, 0)
+shape = SubResource("BoxShape3D_if7xc")
+
+[node name="Label3D" type="Label3D" parent="." unique_id=80140683]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4, 0)
+pixel_size = 0.02
+billboard = 1
+no_depth_test = true
+text = "Interact"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=905976107]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 1, 0)
+mesh = SubResource("QuadMesh_vest1")

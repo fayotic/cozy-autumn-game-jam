@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://b6ghaaiub6rkn"]
+
+[ext_resource type="Script" uid="uid://rpsstogqaeig" path="res://components/interactable/touch_trigger.gd" id="1_18mlw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_eycvo"]
+size = Vector3(1, 1.725, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mvfdc"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_xsl60"]
+material = SubResource("StandardMaterial3D_mvfdc")
+size = Vector2(1, 1.725)
+
+[node name="TouchTrigger" type="Area3D" unique_id=790622220]
+script = ExtResource("1_18mlw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2058707412]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_eycvo")
+
+[node name="Label3D" type="Label3D" parent="." unique_id=1204939148]
+pixel_size = 0.02
+billboard = 1
+no_depth_test = true
+text = "Interact"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=716268255]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 1, 0)
+mesh = SubResource("QuadMesh_xsl60")

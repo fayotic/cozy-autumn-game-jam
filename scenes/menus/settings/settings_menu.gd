@@ -129,4 +129,4 @@ func _set_fps_cap(index: int) -> void:
 func _save_and_exit() -> void:
 	SettingsManager.save_settings()
 	print_debug("Settings saved to SettingsManager, closig menu after save.")
-	queue_free()
+	MenuManager.close_active_menu()

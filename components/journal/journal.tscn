@@ -169,7 +169,6 @@ _data = {
 }
 
 [node name="Journal" type="Node2D" unique_id=495663942]
-visible = false
 script = ExtResource("1_xf83b")
 
 [node name="journalopen" type="Sprite2D" parent="." unique_id=858057872]
@@ -186,6 +185,7 @@ texture = ExtResource("2_mcn13")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=508276929]
 libraries/ = SubResource("AnimationLibrary_fppqi")
+autoplay = &"opening_journal"
 
 [node name="NextButton" type="Button" parent="." unique_id=2114262112]
 visible = false

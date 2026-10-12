@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://cummr2a0o538l" path="res://entities/player/cat.gd" id="1_dc4ry"]
 [ext_resource type="SpriteFrames" uid="uid://dj0m7wm2trs3h" path="res://assets/art/cat/animations/cat animations.tres" id="1_f57o4"]
 [ext_resource type="Script" uid="uid://fr62dxigeego" path="res://entities/player/animation_handler.gd" id="3_hyc1n"]
-[ext_resource type="PackedScene" uid="uid://lfn154n0k540" path="res://components/journal/journal.tscn" id="4_q7pls"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qvfpm"]
 
@@ -20,11 +19,16 @@ debug_color = Color(2.5737882, 0, 1.506561, 0.41960785)
 
 [node name="CatSprite3D" type="AnimatedSprite3D" parent="." unique_id=1626317223]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.068, 0)
+layers = 2
 pixel_size = 0.0034
 billboard = 2
+shaded = true
+alpha_cut = 1
+alpha_scissor_threshold = 0.034
 texture_filter = 0
 sprite_frames = ExtResource("1_f57o4")
 animation = &"idle_back_right"
+frame_progress = 0.92933834
 
 [node name="InteractionArea" type="Area3D" parent="." unique_id=2057740022]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -34,5 +38,3 @@ shape = SubResource("SphereShape3D_qvfpm")
 
 [node name="AnimationHandler" type="Node3D" parent="." unique_id=42846317]
 script = ExtResource("3_hyc1n")
-
-[node name="Journal" parent="." unique_id=495663942 instance=ExtResource("4_q7pls")]
