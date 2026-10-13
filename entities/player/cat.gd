@@ -39,6 +39,12 @@ func _input(event: InputEvent) -> void:
 
 	if event.is_action_pressed("interact"):
 		_try_interact()
+	
+	if event.is_action_pressed("open journal"):
+		if !MenuManager.is_menu_open():
+			MenuManager.load_menu(MenuManager.JOURNAL)
+		else:
+			MenuManager.close_active_menu()
 
 
 func _on_interaction_area_entered(area: Area3D) -> void:

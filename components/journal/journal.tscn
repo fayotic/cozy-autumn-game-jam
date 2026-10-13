@@ -2,193 +2,18 @@
 
 [ext_resource type="Texture2D" uid="uid://cphgqeuvmwbw" path="res://components/journal/Sprites/journal open.png" id="1_lhqvu"]
 [ext_resource type="Script" uid="uid://c78xydm6rpixj" path="res://components/journal/journal.gd" id="1_xf83b"]
-[ext_resource type="Texture2D" uid="uid://b5msa7nnt781p" path="res://components/journal/Sprites/journal close.png" id="2_mcn13"]
 [ext_resource type="PackedScene" uid="uid://48qyf3evns1" path="res://components/journal/journal_data.tscn" id="4_xf83b"]
 [ext_resource type="FontFile" uid="uid://cucruawkqd44x" path="res://components/fonts/Antique Book.ttf" id="5_srk62"]
-
-[sub_resource type="Animation" id="Animation_xf83b"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("journalclose:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(570, 927)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("journalopen:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(571, 320)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("journalclose:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("journalopen:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_lhqvu"]
-resource_name = "closing_journal_"
-length = 1.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("journalclose:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.9),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(570, 313), Vector2(570, 927)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("journalopen:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(571, 320)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("journalclose:modulate")
-tracks/2/interp = 0
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.13333334, 1),
-"transitions": PackedFloat32Array(1, 0.43527517),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("journalopen:modulate")
-tracks/3/interp = 0
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.16666667),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_srk62"]
-resource_name = "opening_journal"
-length = 0.9
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("journalclose:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(570, 927), Vector2(570, 313)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("journalopen:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(571, 320)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("journalclose:modulate")
-tracks/2/interp = 0
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.0009999999, 0.8333333),
-"transitions": PackedFloat32Array(1, 0.43527517),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("journalopen:modulate")
-tracks/3/interp = 0
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.13, 0.8333333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_fppqi"]
-_data = {
-&"RESET": SubResource("Animation_xf83b"),
-&"closing_journal_": SubResource("Animation_lhqvu"),
-&"opening_journal": SubResource("Animation_srk62")
-}
 
 [node name="Journal" type="Node2D" unique_id=495663942]
 script = ExtResource("1_xf83b")
 
 [node name="journalopen" type="Sprite2D" parent="." unique_id=858057872]
-modulate = Color(1, 1, 1, 0)
 position = Vector2(571, 320)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_lhqvu")
 
-[node name="journalclose" type="Sprite2D" parent="." unique_id=729230184]
-modulate = Color(1, 1, 1, 0)
-position = Vector2(570, 927)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_mcn13")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=508276929]
-libraries/ = SubResource("AnimationLibrary_fppqi")
-autoplay = &"opening_journal"
-
 [node name="NextButton" type="Button" parent="." unique_id=2114262112]
-visible = false
 offset_left = 893.0
 offset_top = 291.0
 offset_right = 938.0
@@ -196,7 +21,6 @@ offset_bottom = 322.0
 text = "Next"
 
 [node name="PreviousButton" type="Button" parent="." unique_id=2095099401]
-visible = false
 offset_left = 173.0
 offset_top = 298.0
 offset_right = 248.0
@@ -204,10 +28,8 @@ offset_bottom = 329.0
 text = "Previous"
 
 [node name="JournalData" parent="." unique_id=2073480912 instance=ExtResource("4_xf83b")]
-visible = false
 
 [node name="ItemsFound" type="Label" parent="." unique_id=74316863]
-visible = false
 offset_left = 602.0
 offset_top = 158.0
 offset_right = 798.0

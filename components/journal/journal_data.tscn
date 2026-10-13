@@ -1,6 +1,10 @@
 [gd_scene format=3 uid="uid://48qyf3evns1"]
 
 [ext_resource type="Texture2D" uid="uid://drikhn3hpvdqc" path="res://components/journal/Sprites/journal randy id.png" id="1_n8nsu"]
+[ext_resource type="Texture2D" uid="uid://xxqkx2k0opg2" path="res://components/journal/Sprites/photo gun.png" id="2_8fon1"]
+[ext_resource type="Texture2D" uid="uid://dygs7no5ox5pp" path="res://components/journal/Sprites/photo lamp.png" id="3_4jksr"]
+[ext_resource type="Texture2D" uid="uid://miwxewhcbs7x" path="res://components/journal/Sprites/photo table.png" id="4_sl4pb"]
+[ext_resource type="Texture2D" uid="uid://duo0n3gevr4ri" path="res://components/journal/Sprites/photo vace.png" id="5_kyrog"]
 
 [node name="JournalData" type="Node2D" unique_id=2073480912]
 
@@ -13,18 +17,33 @@ position = Vector2(146, 115)
 scale = Vector2(0.35, 0.35)
 texture = ExtResource("1_n8nsu")
 
-[node name="MiaItems" type="Node2D" parent="." unique_id=1338729837]
+[node name="Gun" type="Sprite2D" parent="RandyItems" unique_id=1554339122]
+visible = false
+position = Vector2(405, 101.999985)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_8fon1")
 
-[node name="MiaPlayerCard" type="Sprite2D" parent="MiaItems" unique_id=189679091]
-position = Vector2(146, 115)
+[node name="Lamp" type="Sprite2D" parent="RandyItems" unique_id=1699326718]
+visible = false
+position = Vector2(553, 101.999985)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_4jksr")
+
+[node name="Table" type="Sprite2D" parent="RandyItems" unique_id=1967678372]
+visible = false
+position = Vector2(404, 231)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_sl4pb")
+
+[node name="Vase" type="Sprite2D" parent="RandyItems" unique_id=1174757695]
+visible = false
+position = Vector2(554, 231)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("5_kyrog")
 
 [node name="GregoryItems" type="Node2D" parent="." unique_id=261524898]
 
 [node name="GregoryPlayerCard" type="Sprite2D" parent="GregoryItems" unique_id=629142939]
-
-[node name="DarenItems" type="Node2D" parent="." unique_id=1488707473]
-
-[node name="DarenPlayerCard" type="Sprite2D" parent="DarenItems" unique_id=985267649]
 
 [node name="StevenItems" type="Node2D" parent="." unique_id=453691843]
 

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="cozy-autumn-game-jam"
-run/main_scene="uid://dkt1uv7dus5ns"
+run/main_scene="uid://rotqtao13hci"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://assets/art/game icons/icon.svg"
 
