@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://b4vw1suok2cvu"]
+
+[ext_resource type="Script" uid="uid://c8odvj1ynx6aw" path="res://scenes/levels/cutscene_1.gd" id="1_1rfcc"]
+[ext_resource type="PackedScene" uid="uid://cay5eo7hnojtq" path="res://components/dialogue/dialogue.tscn" id="2_8ko0b"]
+
+[node name="Cutscene1" type="Node2D" unique_id=972596165]
+script = ExtResource("1_1rfcc")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=572412207]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(28.737366, 16.182777)
+color = Color(0, 0, 0, 1)
+
+[node name="Dialogue" parent="." unique_id=597515325 instance=ExtResource("2_8ko0b")]

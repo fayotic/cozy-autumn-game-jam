@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://btx0q1slqux4x"]
+
+[ext_resource type="Texture2D" uid="uid://0tci5x7p3gr" path="res://scenes/Sprites/IMG_1043.png" id="1_x73sx"]
+[ext_resource type="PackedScene" uid="uid://bdxbaimm7fuaj" path="res://entities/player/cat.tscn" id="2_qwwmc"]
+[ext_resource type="Script" uid="uid://bmrv0rgh40nwj" path="res://components/camera/level_camera.gd" id="3_qwwmc"]
+[ext_resource type="Texture2D" uid="uid://bqnxtsy4u8tn6" path="res://scenes/Sprites/IMG_1049.png" id="4_f0o3i"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_f0o3i"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_c0id2"]
+sky_material = SubResource("ProceduralSkyMaterial_f0o3i")
+
+[sub_resource type="Environment" id="Environment_016hp"]
+background_mode = 2
+sky = SubResource("Sky_c0id2")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2s4ok"]
+albedo_texture = ExtResource("1_x73sx")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_u6ko3"]
+viewport_path = NodePath("Grass/SubViewport")
+
+[node name="Node3D" type="Node3D" unique_id=1365917669]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=61107411]
+environment = SubResource("Environment_016hp")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1912215229]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Floor" type="CSGBox3D" parent="." unique_id=2136136890]
+transform = Transform3D(2.154317, 0, 0, 0, 1, 0, 0, 0, 2.3964329, -16.904425, -4.5935054, -23.520588)
+use_collision = true
+size = Vector3(39.924896, 0.35368162, 36.785065)
+material = SubResource("StandardMaterial3D_2s4ok")
+
+[node name="Cat" parent="." unique_id=2080771299 instance=ExtResource("2_qwwmc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.0302, -4.379665, 17.025238)
+top_level = true
+
+[node name="LevelCamera" type="Camera3D" parent="." unique_id=1261604307 node_paths=PackedStringArray("target")]
+transform = Transform3D(0.68199915, 0.34616396, -0.644242, 0, 0.8808906, 0.47331995, 0.731353, -0.3228038, 0.60076666, -106.10704, 43.444595, 50.961617)
+fov = 26.0
+script = ExtResource("3_qwwmc")
+target = NodePath("../Cat")
+metadata/_custom_type_script = "uid://bmrv0rgh40nwj"
+
+[node name="Grass" type="Node2D" parent="." unique_id=1290308286]
+
+[node name="SubViewport" type="SubViewport" parent="Grass" unique_id=1229707612]
+transparent_bg = true
+size = Vector2i(2000, 2000)
+
+[node name="Sprite2D" type="Sprite2D" parent="Grass/SubViewport" unique_id=1243359031]
+position = Vector2(1000, 1000)
+texture = ExtResource("4_f0o3i")
+
+[node name="Grass1" type="Sprite3D" parent="Grass" unique_id=1884683668]
+transform = Transform3D(0.27227464, 0.022372909, -0.41876724, -0.040947177, 0.49832058, -9.0237856e-10, 0.41736063, 0.034294672, 0.2731923, -54.990776, -3.5020285, 13.609812)
+texture = SubResource("ViewportTexture_u6ko3")
+
+[node name="Grass2" type="Node2D" parent="." unique_id=1706179405]
+
+[node name="SubViewport" type="SubViewport" parent="Grass2" unique_id=1501476571]
+transparent_bg = true
+size = Vector2i(2000, 2000)
+
+[node name="Sprite2D" type="Sprite2D" parent="Grass2/SubViewport" unique_id=31059011]
+position = Vector2(1000, 1000)
+texture = ExtResource("4_f0o3i")
+
+[node name="Grass1" type="Sprite3D" parent="Grass2" unique_id=160237003]
+transform = Transform3D(0.27227464, 0.022372909, -0.41876724, -0.040947177, 0.49832058, -9.0237856e-10, 0.41736063, 0.034294672, 0.2731923, -56.295727, -3.5020285, 13.609812)
+texture = SubResource("ViewportTexture_u6ko3")
+
+[node name="Grass3" type="Node2D" parent="." unique_id=1184021722]
+
+[node name="SubViewport" type="SubViewport" parent="Grass3" unique_id=1257568247]
+transparent_bg = true
+size = Vector2i(2000, 2000)
+
+[node name="Sprite2D" type="Sprite2D" parent="Grass3/SubViewport" unique_id=585978859]
+position = Vector2(1000, 1000)
+texture = ExtResource("4_f0o3i")
+
+[node name="Grass1" type="Sprite3D" parent="Grass3" unique_id=699858515]
+transform = Transform3D(0.27227464, 0.022372909, -0.41876724, -0.040947177, 0.49832058, -9.0237856e-10, 0.41736063, 0.034294672, 0.2731923, -54.46305, -3.5020285, 16.194345)
+texture = SubResource("ViewportTexture_u6ko3")

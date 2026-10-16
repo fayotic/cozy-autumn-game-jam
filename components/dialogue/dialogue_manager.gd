@@ -18,6 +18,8 @@ var is_playing: bool = false
 #Bool variable to see if dialogue is finished
 var is_finished: bool = false
 
+signal dialogue_finished
+
 #Player uses left mouse button to continue the dialogue; wants to figure out the pause/skip mechanic
 func _input(event: InputEvent) -> void:
 	if $Dialogue.visible == true and event.is_action_pressed("dialogue"):
@@ -68,3 +70,4 @@ func fade_dialogue():
 		anim_player.play("fade_out")
 		await anim_player.animation_finished
 		$Dialogue.visible = false
+		dialogue_finished.emit()
