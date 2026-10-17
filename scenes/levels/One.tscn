@@ -10,13 +10,12 @@
 [ext_resource type="PackedScene" uid="uid://dfpm1mey1ggr6" path="res://components/interactable/door.tscn" id="6_uvpvg"]
 [ext_resource type="Texture2D" uid="uid://c2wa1e3mc8bry" path="res://assets/textures/plank/plank_bottom.png" id="7_1smcq"]
 [ext_resource type="Texture2D" uid="uid://dpxm24sis0xkv" path="res://assets/art/objects/desk/desk.png" id="8_c03nr"]
-[ext_resource type="Script" uid="uid://dgd7l6pp7bsec" path="res://components/interactable/interactable_object.gd" id="8_j80x7"]
 [ext_resource type="PackedScene" uid="uid://btx0q1slqux4x" path="res://scenes/levels/outside.tscn" id="9_ratfy"]
-[ext_resource type="PackedScene" uid="uid://48qyf3evns1" path="res://components/journal/journal_data.tscn" id="10_tb12n"]
 [ext_resource type="Texture2D" uid="uid://cekg788bjkq0t" path="res://scenes/Sprites/table.png" id="12_gllsx"]
 [ext_resource type="Texture2D" uid="uid://rng8b3m3dk6g" path="res://scenes/Sprites/couch.png" id="13_8ge3l"]
 [ext_resource type="Texture2D" uid="uid://d3r5xcxccmxg7" path="res://scenes/Sprites/painting.png" id="13_ratfy"]
 [ext_resource type="Texture2D" uid="uid://clibqar4jt88x" path="res://scenes/Sprites/brokenjar.png" id="14_kwg76"]
+[ext_resource type="Script" uid="uid://y00g28dofko8" path="res://components/interactable/collectible_item.gd" id="14_ratfy"]
 [ext_resource type="Texture2D" uid="uid://bcfemtetsp8vn" path="res://scenes/Sprites/gun.png" id="15_ystmu"]
 [ext_resource type="Texture2D" uid="uid://b46vfgfyoklxr" path="res://scenes/Sprites/brokentable.png" id="16_q1kyg"]
 
@@ -165,19 +164,26 @@ viewport_path = NodePath("Objects/Painting/SubViewport")
 [sub_resource type="ViewportTexture" id="ViewportTexture_gllsx"]
 viewport_path = NodePath("InteractableObjects/Vase/SubViewport")
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_f0o3i"]
-
 [sub_resource type="SphereShape3D" id="SphereShape3D_u6ko3"]
-radius = 2.0901597
+radius = 1.3534412
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_tb12n"]
+radius = 0.7328834
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_q1kyg"]
 viewport_path = NodePath("InteractableObjects/Gun/SubViewport")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_1s1io"]
+radius = 1.1
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_cmg17"]
 viewport_path = NodePath("InteractableObjects/Broken_Table/SubViewport")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_85fo1"]
 size = Vector3(1.8582458, 1.0997314, 1.3169081)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_hudla"]
+radius = 1.2
 
 [node name="One" type="Node3D" unique_id=370668894]
 
@@ -280,7 +286,6 @@ metadata/_custom_type_script = "uid://bmrv0rgh40nwj"
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -3.3727252, 0.080869496, 6.0011873)
 scene_to_request = ExtResource("9_ratfy")
 interact_text = "Enter"
-journal_data = ExtResource("10_tb12n")
 
 [node name="Objects" type="Node3D" parent="." unique_id=1608343731]
 
@@ -338,6 +343,11 @@ transform = Transform3D(0.9969989, 0, -0.07741564, 0, 1, 0, 0.07741564, 0, 0.996
 cast_shadow = 3
 size = Vector3(1.6814804, 0.07519531, 2.9726563)
 
+[node name="CSGBox3D2" type="CSGBox3D" parent="Objects/Couch" unique_id=89651479]
+transform = Transform3D(0.07741559, 0, 0.9969989, 0, 1, 0, -0.9969989, 0, 0.07741559, -4.5682135, 0.37223792, -0.37514937)
+cast_shadow = 3
+size = Vector3(1.9082031, 0.07519531, 3.7705078)
+
 [node name="Table" type="Node3D" parent="Objects" unique_id=1200222637]
 process_priority = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.6302805, -1.4428917, -0.9926718)
@@ -346,6 +356,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.6302805, -1.4428917, -0.992
 transform = Transform3D(0.8145812, 0.4758555, -0.33169156, -0.1282548, 0.705438, 0.697071, 0.5656927, -0.5252799, 0.635667, -3.6401958, 5.018419, 3.443517)
 pixel_size = 0.005
 shaded = true
+texture_filter = 2
 texture = ExtResource("12_gllsx")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Objects/Table" unique_id=1144279952]
@@ -353,6 +364,11 @@ transform = Transform3D(2.0372338, 0, -0.14798686, 0, 1, 0, 0.43567201, 0, 0.691
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Table/StaticBody3D" unique_id=1862786691]
 shape = SubResource("BoxShape3D_u6ko3")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Objects/Table" unique_id=1966788694]
+transform = Transform3D(0.0033741817, 0, 0.9999943, 0, 1, 0, -0.9999943, 0, 0.0033741817, -5.0076566, 1.8267475, 4.893125)
+cast_shadow = 3
+size = Vector3(1.0888672, 0.07519531, 2.394699)
 
 [node name="Carpet" type="Node3D" parent="Objects" unique_id=2120484438]
 process_priority = -1
@@ -367,6 +383,8 @@ texture = ExtResource("5_8ge3l")
 
 [node name="Sprite3D" type="Sprite3D" parent="Objects/Carpet" unique_id=731146306]
 transform = Transform3D(-1.3113416e-08, 0.3, -1.3113417e-08, 0, -1.3113417e-08, -0.3, -0.29999998, -1.3113417e-08, 5.7320567e-16, 1.4229345, 0.3119756, 3.180632)
+modulate = Color(0.5251013, 0.5251013, 0.5251013, 1)
+shaded = true
 texture = SubResource("ViewportTexture_y8gky")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Carpet/Sprite3D" unique_id=14052308]
@@ -432,8 +450,9 @@ texture = SubResource("ViewportTexture_gwnlq")
 
 [node name="Vase" type="Area3D" parent="InteractableObjects" unique_id=1240353010]
 priority = 1
-script = ExtResource("8_j80x7")
-metadata/_custom_type_script = "uid://dgd7l6pp7bsec"
+script = ExtResource("14_ratfy")
+entry_id = &"vase"
+metadata/_custom_type_script = "uid://y00g28dofko8"
 
 [node name="SubViewport" type="SubViewport" parent="InteractableObjects/Vase" unique_id=421608584]
 transparent_bg = true
@@ -447,23 +466,34 @@ texture = ExtResource("14_kwg76")
 transform = Transform3D(-0.014629327, 0.17367496, 0.2441781, 0.11245329, 0.2297822, -0.15669829, -0.27774113, 0.08388754, -0.07630629, 6.561165, 1.2019687, 3.9649787)
 texture = SubResource("ViewportTexture_gllsx")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="InteractableObjects/Vase" unique_id=901991025]
-transform = Transform3D(0.2559104, 0, 0, 0, 1, 0, 0, 0, 0.45733368, 5.7189918, 0, 2.1477485)
-visible = false
-physics_material_override = SubResource("PhysicsMaterial_f0o3i")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableObjects/Vase/StaticBody3D" unique_id=162792485]
-transform = Transform3D(0.9999998, 0, 0, 0, 1, 0, 0, 0, 0.9999999, -0.15995598, 0.79613125, 2.8810234)
-visible = false
-shape = SubResource("SphereShape3D_u6ko3")
+[node name="VaseShadow" type="Sprite3D" parent="InteractableObjects/Vase" unique_id=1891915534]
+transform = Transform3D(-0.014629327, 0.17367496, 0.2441781, 0.11245329, 0.2297822, -0.15669829, -0.27774113, 0.08388754, -0.07630629, 6.587932, 1.1443862, 3.994577)
+modulate = Color(0, 0, 0, 1)
+texture = SubResource("ViewportTexture_gllsx")
 
 [node name="Label3D" type="Label3D" parent="InteractableObjects/Vase" unique_id=756466469]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.7573624, 0.27513528, 1.0420647)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.158133, 1.7219373, 3.71772)
+billboard = 1
+text = "Take Photo"
+font_size = 53
+
+[node name="InteractionCol" type="CollisionShape3D" parent="InteractableObjects/Vase" unique_id=162792485]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.678057, 0.79613125, 3.4653375)
+shape = SubResource("SphereShape3D_u6ko3")
+debug_color = Color(0.95514816, 0.17613098, 0.3152488, 0.41960785)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="InteractableObjects/Vase" unique_id=1754867607]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableObjects/Vase/StaticBody3D" unique_id=1635161870]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.350774, 0.7961314, 3.4956777)
+shape = SubResource("SphereShape3D_tb12n")
+debug_color = Color(0.95514816, 0.17613098, 0.3152488, 0.41960785)
 
 [node name="Gun" type="Area3D" parent="InteractableObjects" unique_id=1667033864]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5515852, -4.0268555, -7.541588)
-script = ExtResource("8_j80x7")
-metadata/_custom_type_script = "uid://dgd7l6pp7bsec"
+script = ExtResource("14_ratfy")
+entry_id = &"gun"
+metadata/_custom_type_script = "uid://y00g28dofko8"
 
 [node name="SubViewport" type="SubViewport" parent="InteractableObjects/Gun" unique_id=614687012]
 transparent_bg = true
@@ -477,10 +507,22 @@ texture = ExtResource("15_ystmu")
 transform = Transform3D(0.3366911, 0.24108, -0.46964788, -0.0074871406, 0.2911379, 0.73756254, 0.35685137, -0.2213518, 0.45859012, 1.2479246, 4.9201303, 10.888248)
 texture = SubResource("ViewportTexture_q1kyg")
 
+[node name="InteractionCol" type="CollisionShape3D" parent="InteractableObjects/Gun" unique_id=1161451684]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2479246, 4.9201303, 10.888248)
+shape = SubResource("SphereShape3D_1s1io")
+
+[node name="Label3D" type="Label3D" parent="InteractableObjects/Gun" unique_id=1029786778]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2479246, 5.4201303, 10.888248)
+pixel_size = 0.02
+billboard = 1
+no_depth_test = true
+text = "Interact"
+
 [node name="Broken_Table" type="Area3D" parent="InteractableObjects" unique_id=1007110492]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.61627054, -0.57502794, 0)
-script = ExtResource("8_j80x7")
-metadata/_custom_type_script = "uid://dgd7l6pp7bsec"
+script = ExtResource("14_ratfy")
+entry_id = &"table"
+metadata/_custom_type_script = "uid://y00g28dofko8"
 
 [node name="SubViewport" type="SubViewport" parent="InteractableObjects/Broken_Table" unique_id=432187547]
 transparent_bg = true
@@ -492,6 +534,14 @@ offset = Vector2(400, -100)
 
 [node name="Sprite3D" type="Sprite3D" parent="InteractableObjects/Broken_Table" unique_id=407934399]
 transform = Transform3D(0.39890307, 0, -0.41665277, 0.08383462, 0.3965468, 0.692314, 0.11444634, -0.29047978, 0.9451084, -2.2268848, 1.7398312, 0.37133145)
+modulate = Color(0.78352344, 0.7835234, 0.7835234, 1)
+shaded = true
+texture = SubResource("ViewportTexture_cmg17")
+
+[node name="Sprite3D2" type="Sprite3D" parent="InteractableObjects/Broken_Table" unique_id=568421326]
+transform = Transform3D(0.41550526, -1.4662743e-08, -0.41650736, 0.0873238, 0.39690453, 0.6920723, 0.11920956, -0.29074177, 0.9447786, -2.236164, 1.6613637, 0.35993314)
+modulate = Color(0, 0, 0, 1)
+shaded = true
 texture = SubResource("ViewportTexture_cmg17")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="InteractableObjects/Broken_Table" unique_id=1311990714]
@@ -500,6 +550,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.352812, 0.97797084, -0.748
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableObjects/Broken_Table/StaticBody3D" unique_id=1644753245]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16001892, 0.523438, 0.7068151)
 shape = SubResource("BoxShape3D_85fo1")
+
+[node name="InteractionCol" type="CollisionShape3D" parent="InteractableObjects/Broken_Table" unique_id=1841179944]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2268848, 1.7398312, 0.37133145)
+shape = SubResource("SphereShape3D_hudla")
+
+[node name="Label3D" type="Label3D" parent="InteractableObjects/Broken_Table" unique_id=1228019117]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2268848, 2.339831, 0.37133145)
+pixel_size = 0.02
+billboard = 1
+no_depth_test = true
+text = "Interact"
 
 [node name="Cat" parent="." unique_id=2080771299 instance=ExtResource("2_roghd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.6863017, 0, 4.626829)

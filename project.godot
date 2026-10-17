@@ -22,6 +22,7 @@ SettingsManager="*uid://dpsm543c3krpr"
 SaveManager="*uid://cnrguw4j31ir1"
 LoadManager="*uid://b5bna6p4og7eu"
 MenuManager="*uid://dkyaijcr68ia4"
+JournalManager="*res://autoloads/journal_manager.gd"
 
 [input]
 

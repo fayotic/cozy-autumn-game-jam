@@ -5,10 +5,7 @@ class_name InteractableObject
 signal interacted
 
 @export var interact_text: String = "Take Photo"
-@onready var prompt: Label3D = $Label3D
-
-@export var journal_data: PackedScene
-
+@onready var prompt: Label3D = get_node_or_null("Label3D")
 
 
 func _ready() -> void:
@@ -22,8 +19,6 @@ func _ready() -> void:
 
 func interact() -> void:
 	interacted.emit()
-
-	
 
 
 func set_prompt_visible(value: bool) -> void:

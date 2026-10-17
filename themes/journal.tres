@@ -1,0 +1,49 @@
+[gd_resource type="Theme" format=3 uid="uid://b4b2bm3t2jd7r"]
+
+[ext_resource type="FontFile" uid="uid://cucruawkqd44x" path="res://components/fonts/Antique Book.ttf" id="1_ediog"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bedk3"]
+bg_color = Color(0.7882353, 0.4627451, 0.30980393, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.09019608, 0.09019608, 0.09019608, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ediog"]
+bg_color = Color(0.68235296, 0.35686275, 0.2627451, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.09019608, 0.09019608, 0.09019608, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1tewe"]
+bg_color = Color(0.54901963, 0.27450982, 0.19607843, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.09019608, 0.09019608, 0.09019608, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[resource]
+Button/colors/font_color = Color(0.95686275, 0.89411765, 0.75686276, 1)
+Button/font_sizes/font_size = 26
+Button/styles/hover = SubResource("StyleBoxFlat_bedk3")
+Button/styles/normal = SubResource("StyleBoxFlat_ediog")
+Button/styles/pressed = SubResource("StyleBoxFlat_1tewe")
+Label/colors/font_color = Color(0.16862746, 0.1254902, 0.08627451, 1)
+Label/font_sizes/font_size = 40
+Label/fonts/font = ExtResource("1_ediog")
