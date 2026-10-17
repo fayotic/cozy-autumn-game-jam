@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://clwedrnowvod"]
+
+[ext_resource type="Script" uid="uid://dpmknxl6qhxyo" path="res://scenes/levels/titlescreen.gd" id="1_ruqej"]
+
+[node name="Titlescreen" type="Node2D" unique_id=117988690]
+script = ExtResource("1_ruqej")
+
+[node name="Button" type="Button" parent="." unique_id=359011196]
+offset_left = 524.0
+offset_top = 293.0
+offset_right = 565.0
+offset_bottom = 324.0
+text = "Play"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

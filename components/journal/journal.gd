@@ -23,8 +23,11 @@ var item_count: Array = []
 var items_found: Array = []
 var percentage: Array = []
 
+@onready var door_sig = "InteractableObjects/Vase"
+
 func _ready() -> void:
 	journal_data_array.append_array(journal_data.get_children())
+	
 	
 #Cycles through the journal data node and shows based on index
 func cycle_data(i: int):

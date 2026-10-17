@@ -6,14 +6,19 @@
 [ext_resource type="Texture2D" uid="uid://bqacfdukur2cv" path="res://assets/textures/log/log_wall.png" id="4_j80x7"]
 [ext_resource type="Script" uid="uid://bmrv0rgh40nwj" path="res://components/camera/level_camera.gd" id="4_rcjcm"]
 [ext_resource type="Texture2D" uid="uid://degn65wha8ufl" path="res://scenes/Sprites/rug.png" id="5_8ge3l"]
-[ext_resource type="PackedScene" uid="uid://coikqu6xwvaaw" path="res://scenes/testing/test_level.tscn" id="5_514h1"]
 [ext_resource type="Texture2D" uid="uid://bqmwsdx83yqqr" path="res://assets/textures/plank/plank_right.png" id="6_2g06l"]
 [ext_resource type="PackedScene" uid="uid://dfpm1mey1ggr6" path="res://components/interactable/door.tscn" id="6_uvpvg"]
 [ext_resource type="Texture2D" uid="uid://c2wa1e3mc8bry" path="res://assets/textures/plank/plank_bottom.png" id="7_1smcq"]
 [ext_resource type="Texture2D" uid="uid://dpxm24sis0xkv" path="res://assets/art/objects/desk/desk.png" id="8_c03nr"]
 [ext_resource type="Script" uid="uid://dgd7l6pp7bsec" path="res://components/interactable/interactable_object.gd" id="8_j80x7"]
+[ext_resource type="PackedScene" uid="uid://btx0q1slqux4x" path="res://scenes/levels/outside.tscn" id="9_ratfy"]
+[ext_resource type="PackedScene" uid="uid://48qyf3evns1" path="res://components/journal/journal_data.tscn" id="10_tb12n"]
+[ext_resource type="Texture2D" uid="uid://cekg788bjkq0t" path="res://scenes/Sprites/table.png" id="12_gllsx"]
 [ext_resource type="Texture2D" uid="uid://rng8b3m3dk6g" path="res://scenes/Sprites/couch.png" id="13_8ge3l"]
+[ext_resource type="Texture2D" uid="uid://d3r5xcxccmxg7" path="res://scenes/Sprites/painting.png" id="13_ratfy"]
 [ext_resource type="Texture2D" uid="uid://clibqar4jt88x" path="res://scenes/Sprites/brokenjar.png" id="14_kwg76"]
+[ext_resource type="Texture2D" uid="uid://bcfemtetsp8vn" path="res://scenes/Sprites/gun.png" id="15_ystmu"]
+[ext_resource type="Texture2D" uid="uid://b46vfgfyoklxr" path="res://scenes/Sprites/brokentable.png" id="16_q1kyg"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6y6ag"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -141,10 +146,12 @@ size = Vector2(13.425, 0.193)
 size = Vector3(13.371094, 6.0772705, 0.31533813)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0qb2x"]
-size = Vector3(2.9478052, 3.3654175, 2.949585)
+size = Vector3(2.0625734, 1.24403, 2.3899498)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rjgr3"]
-size = Vector3(2.287248, 1.3751221, 1.6462798)
+size = Vector3(2.287248, 1.3751221, 2.354512)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u6ko3"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_y8gky"]
 viewport_path = NodePath("Objects/Carpet/SubViewport")
@@ -152,13 +159,25 @@ viewport_path = NodePath("Objects/Carpet/SubViewport")
 [sub_resource type="BoxShape3D" id="BoxShape3D_y8gky"]
 size = Vector3(4.860901, 3.8030243, 0.5895996)
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_gwnlq"]
+viewport_path = NodePath("Objects/Painting/SubViewport")
+
 [sub_resource type="ViewportTexture" id="ViewportTexture_gllsx"]
-viewport_path = NodePath("Objects/Vase/SubViewport")
+viewport_path = NodePath("InteractableObjects/Vase/SubViewport")
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_f0o3i"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_u6ko3"]
-radius = 0.5650987
+radius = 2.0901597
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_q1kyg"]
+viewport_path = NodePath("InteractableObjects/Gun/SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_cmg17"]
+viewport_path = NodePath("InteractableObjects/Broken_Table/SubViewport")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_85fo1"]
+size = Vector3(1.8582458, 1.0997314, 1.3169081)
 
 [node name="One" type="Node3D" unique_id=370668894]
 
@@ -181,10 +200,6 @@ use_collision = true
 flip_faces = true
 size = Vector3(22.905273, 16.485596, 18.58789)
 material = SubResource("StandardMaterial3D_nawxh")
-
-[node name="Cat" parent="Build" unique_id=2080771299 instance=ExtResource("2_roghd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4307742, 0, 2.812749)
-can_interact = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Build" unique_id=968530204]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1992567, 2.876987, -1.7061646)
@@ -255,58 +270,19 @@ shadow_enabled = true
 [node name="Other" type="Node3D" parent="." unique_id=907763423]
 
 [node name="LevelCamera" type="Camera3D" parent="Other" unique_id=1751915271 node_paths=PackedStringArray("target")]
-transform = Transform3D(0.68199915, 0.34616396, -0.644242, 0, 0.8808906, 0.47331995, 0.731353, -0.3228038, 0.60076666, -14.3857, 10.665, 15.4108)
+transform = Transform3D(0.68199915, 0.34616396, -0.644242, 0, 0.8808906, 0.47331995, 0.731353, -0.3228038, 0.60076666, -15.615551, 12.183131, 16.25504)
 fov = 26.0
 script = ExtResource("4_rcjcm")
-target = NodePath("../../Build/Cat")
+target = NodePath("../../Cat")
 metadata/_custom_type_script = "uid://bmrv0rgh40nwj"
 
 [node name="Door" parent="Other" unique_id=1577884319 instance=ExtResource("6_uvpvg")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -3.3727252, 0.080869496, 6.0011873)
-scene_to_request = ExtResource("5_514h1")
+scene_to_request = ExtResource("9_ratfy")
 interact_text = "Enter"
+journal_data = ExtResource("10_tb12n")
 
 [node name="Objects" type="Node3D" parent="." unique_id=1608343731]
-
-[node name="SpotLight3D" type="SpotLight3D" parent="Objects" unique_id=207203673]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -2.2595308, 5.630652, -1.494592)
-light_color = Color(1, 1, 0.65882355, 1)
-light_energy = 0.454
-light_bake_mode = 1
-shadow_enabled = true
-shadow_normal_bias = 0.545
-spot_range = 14.721115
-spot_attenuation = 0.09
-
-[node name="SpotLight3D2" type="SpotLight3D" parent="Objects" unique_id=1287590335]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 4.5479956, 5.630652, -1.494592)
-light_color = Color(1, 1, 0.65882355, 1)
-light_energy = 0.454
-light_bake_mode = 1
-shadow_enabled = true
-shadow_normal_bias = 0.545
-spot_range = 14.721115
-spot_attenuation = 0.09
-
-[node name="SpotLight3D3" type="SpotLight3D" parent="Objects" unique_id=1198187340]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -2.2595308, 5.630652, 5.3206897)
-light_color = Color(1, 1, 0.65882355, 1)
-light_energy = 0.454
-light_bake_mode = 1
-shadow_enabled = true
-shadow_normal_bias = 0.545
-spot_range = 14.721115
-spot_attenuation = 0.09
-
-[node name="SpotLight3D4" type="SpotLight3D" parent="Objects" unique_id=492471349]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 4.5479956, 5.630652, 5.3206897)
-light_color = Color(1, 1, 0.65882355, 1)
-light_energy = 0.454
-light_bake_mode = 1
-shadow_enabled = true
-shadow_normal_bias = 0.545
-spot_range = 14.721115
-spot_attenuation = 0.09
 
 [node name="Desk" type="Node3D" parent="Objects" unique_id=1682304923]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.394, -0.061, -0.287)
@@ -320,6 +296,7 @@ texture = ExtResource("8_c03nr")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Desk" unique_id=65448796]
 transform = Transform3D(0.83375406, 0.552136, 0, -0.552136, 0.83375406, 0, 0, 0, 1, 0.37566376, 0.06380583, 0)
 shape = SubResource("BoxShape3D_0qb2x")
+debug_color = Color(0, 0.3019608, 0.35686275, 0.8862745)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Objects/Desk" unique_id=870401428]
 
@@ -346,6 +323,7 @@ texture = ExtResource("13_8ge3l")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Couch" unique_id=1931777137]
 transform = Transform3D(0.999966, 0, -0.008244678, 0, 1, 0, 0.008244678, 0, 0.999966, -4.5038047, 1.1827087, -0.9498792)
 shape = SubResource("BoxShape3D_0qb2x")
+debug_color = Color(0, 0.3019608, 0.35686275, 0.8862745)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Objects/Couch" unique_id=1319108836]
 transform = Transform3D(1.245783, 0, -0.05361399, 0, 1.4543781, 0, 0.022633687, 0, 2.9509757, -2.824686, 0.21552016, 0.62880063)
@@ -360,7 +338,24 @@ transform = Transform3D(0.9969989, 0, -0.07741564, 0, 1, 0, 0.07741564, 0, 0.996
 cast_shadow = 3
 size = Vector3(1.6814804, 0.07519531, 2.9726563)
 
+[node name="Table" type="Node3D" parent="Objects" unique_id=1200222637]
+process_priority = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.6302805, -1.4428917, -0.9926718)
+
+[node name="Sprite3D" type="Sprite3D" parent="Objects/Table" unique_id=1338727215]
+transform = Transform3D(0.8145812, 0.4758555, -0.33169156, -0.1282548, 0.705438, 0.697071, 0.5656927, -0.5252799, 0.635667, -3.6401958, 5.018419, 3.443517)
+pixel_size = 0.005
+shaded = true
+texture = ExtResource("12_gllsx")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Objects/Table" unique_id=1144279952]
+transform = Transform3D(2.0372338, 0, -0.14798686, 0, 1, 0, 0.43567201, 0, 0.6919972, -5.3355193, 2.292057, 5.0485125)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Table/StaticBody3D" unique_id=1862786691]
+shape = SubResource("BoxShape3D_u6ko3")
+
 [node name="Carpet" type="Node3D" parent="Objects" unique_id=2120484438]
+process_priority = -1
 
 [node name="SubViewport" type="SubViewport" parent="Objects/Carpet" unique_id=575123847]
 transparent_bg = true
@@ -377,31 +372,135 @@ texture = SubResource("ViewportTexture_y8gky")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Carpet/Sprite3D" unique_id=14052308]
 transform = Transform3D(1, 0, 0, 3.5527137e-15, 1, -8.3518724e-23, -2.1175824e-22, -8.351872e-23, 1, -0.35632133, -0.14730787, 0.20520091)
 shape = SubResource("BoxShape3D_y8gky")
+disabled = true
 
-[node name="Vase" type="Area3D" parent="Objects" unique_id=1240353010]
+[node name="Lights" type="Node3D" parent="Objects" unique_id=1082610172]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Objects/Lights" unique_id=207203673]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -2.2595308, 5.630652, -1.494592)
+light_color = Color(1, 1, 0.65882355, 1)
+light_energy = 0.454
+light_bake_mode = 1
+shadow_enabled = true
+shadow_normal_bias = 0.545
+spot_range = 14.721115
+spot_attenuation = 0.09
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Objects/Lights" unique_id=1287590335]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 4.5479956, 5.630652, -1.494592)
+light_color = Color(1, 1, 0.65882355, 1)
+light_energy = 0.454
+light_bake_mode = 1
+shadow_enabled = true
+shadow_normal_bias = 0.545
+spot_range = 14.721115
+spot_attenuation = 0.09
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="Objects/Lights" unique_id=1198187340]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -2.2595308, 5.630652, 5.3206897)
+light_color = Color(1, 1, 0.65882355, 1)
+light_energy = 0.454
+light_bake_mode = 1
+shadow_enabled = true
+shadow_normal_bias = 0.545
+spot_range = 14.721115
+spot_attenuation = 0.09
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="Objects/Lights" unique_id=492471349]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 4.5479956, 5.630652, 5.3206897)
+light_color = Color(1, 1, 0.65882355, 1)
+light_energy = 0.454
+light_bake_mode = 1
+shadow_enabled = true
+shadow_normal_bias = 0.545
+spot_range = 14.721115
+spot_attenuation = 0.09
+
+[node name="Painting" type="Node3D" parent="Objects" unique_id=695865518]
+
+[node name="SubViewport" type="SubViewport" parent="Objects/Painting" unique_id=2061451807]
+transparent_bg = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Objects/Painting/SubViewport" unique_id=720834358]
+texture = ExtResource("13_ratfy")
+
+[node name="Sprite3D" type="Sprite3D" parent="Objects/Painting" unique_id=822366801]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5569263, 2.3891978, -1.6655213)
+texture = SubResource("ViewportTexture_gwnlq")
+
+[node name="InteractableObjects" type="Node3D" parent="." unique_id=113276799]
+
+[node name="Vase" type="Area3D" parent="InteractableObjects" unique_id=1240353010]
 priority = 1
 script = ExtResource("8_j80x7")
-interact_text = "Take Photo"
 metadata/_custom_type_script = "uid://dgd7l6pp7bsec"
 
-[node name="SubViewport" type="SubViewport" parent="Objects/Vase" unique_id=421608584]
+[node name="SubViewport" type="SubViewport" parent="InteractableObjects/Vase" unique_id=421608584]
 transparent_bg = true
 size = Vector2i(2000, 2000)
 
-[node name="Sprite2D" type="Sprite2D" parent="Objects/Vase/SubViewport" unique_id=666516181]
+[node name="Sprite2D" type="Sprite2D" parent="InteractableObjects/Vase/SubViewport" unique_id=666516181]
 position = Vector2(1000, 600)
 texture = ExtResource("14_kwg76")
 
-[node name="Sprite3D" type="Sprite3D" parent="Objects/Vase" unique_id=1135615229]
-transform = Transform3D(-0.014629334, 0.17367497, 0.24417812, 0.20434551, 0.18458378, -0.11904484, -0.21915476, 0.16051729, -0.12730017, 6.561165, 1.2019687, 3.9649787)
+[node name="Sprite3D" type="Sprite3D" parent="InteractableObjects/Vase" unique_id=1135615229]
+transform = Transform3D(-0.014629327, 0.17367496, 0.2441781, 0.11245329, 0.2297822, -0.15669829, -0.27774113, 0.08388754, -0.07630629, 6.561165, 1.2019687, 3.9649787)
 texture = SubResource("ViewportTexture_gllsx")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Objects/Vase" unique_id=901991025]
+[node name="StaticBody3D" type="StaticBody3D" parent="InteractableObjects/Vase" unique_id=901991025]
 transform = Transform3D(0.2559104, 0, 0, 0, 1, 0, 0, 0, 0.45733368, 5.7189918, 0, 2.1477485)
+visible = false
 physics_material_override = SubResource("PhysicsMaterial_f0o3i")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Vase/StaticBody3D" unique_id=162792485]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.625943, 0.79613125, 3.2696815)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableObjects/Vase/StaticBody3D" unique_id=162792485]
+transform = Transform3D(0.9999998, 0, 0, 0, 1, 0, 0, 0, 0.9999999, -0.15995598, 0.79613125, 2.8810234)
+visible = false
 shape = SubResource("SphereShape3D_u6ko3")
 
-[node name="Label3D" type="Label3D" parent="Objects/Vase" unique_id=756466469]
+[node name="Label3D" type="Label3D" parent="InteractableObjects/Vase" unique_id=756466469]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.7573624, 0.27513528, 1.0420647)
+
+[node name="Gun" type="Area3D" parent="InteractableObjects" unique_id=1667033864]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5515852, -4.0268555, -7.541588)
+script = ExtResource("8_j80x7")
+metadata/_custom_type_script = "uid://dgd7l6pp7bsec"
+
+[node name="SubViewport" type="SubViewport" parent="InteractableObjects/Gun" unique_id=614687012]
+transparent_bg = true
+size = Vector2i(450, 500)
+
+[node name="Sprite2D" type="Sprite2D" parent="InteractableObjects/Gun/SubViewport" unique_id=1470871634]
+position = Vector2(900, 700)
+texture = ExtResource("15_ystmu")
+
+[node name="Sprite3D" type="Sprite3D" parent="InteractableObjects/Gun" unique_id=1002207034]
+transform = Transform3D(0.3366911, 0.24108, -0.46964788, -0.0074871406, 0.2911379, 0.73756254, 0.35685137, -0.2213518, 0.45859012, 1.2479246, 4.9201303, 10.888248)
+texture = SubResource("ViewportTexture_q1kyg")
+
+[node name="Broken_Table" type="Area3D" parent="InteractableObjects" unique_id=1007110492]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.61627054, -0.57502794, 0)
+script = ExtResource("8_j80x7")
+metadata/_custom_type_script = "uid://dgd7l6pp7bsec"
+
+[node name="SubViewport" type="SubViewport" parent="InteractableObjects/Broken_Table" unique_id=432187547]
+transparent_bg = true
+size = Vector2i(1000, 600)
+
+[node name="Sprite2D" type="Sprite2D" parent="InteractableObjects/Broken_Table/SubViewport" unique_id=309831376]
+texture = ExtResource("16_q1kyg")
+offset = Vector2(400, -100)
+
+[node name="Sprite3D" type="Sprite3D" parent="InteractableObjects/Broken_Table" unique_id=407934399]
+transform = Transform3D(0.39890307, 0, -0.41665277, 0.08383462, 0.3965468, 0.692314, 0.11444634, -0.29047978, 0.9451084, -2.2268848, 1.7398312, 0.37133145)
+texture = SubResource("ViewportTexture_cmg17")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="InteractableObjects/Broken_Table" unique_id=1311990714]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.352812, 0.97797084, -0.7484355)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableObjects/Broken_Table/StaticBody3D" unique_id=1644753245]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16001892, 0.523438, 0.7068151)
+shape = SubResource("BoxShape3D_85fo1")
+
+[node name="Cat" parent="." unique_id=2080771299 instance=ExtResource("2_roghd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.6863017, 0, 4.626829)
+can_interact = true
