@@ -1,15 +1,138 @@
 [gd_scene format=3 uid="uid://clwedrnowvod"]
 
 [ext_resource type="Script" uid="uid://dpmknxl6qhxyo" path="res://scenes/levels/titlescreen.gd" id="1_ruqej"]
+[ext_resource type="Texture2D" uid="uid://dpxuuk3td18eo" path="res://assets/art/ui/title light.png" id="2_kmcnc"]
+[ext_resource type="FontFile" uid="uid://cucruawkqd44x" path="res://components/fonts/Antique Book.ttf" id="2_s8kqv"]
+[ext_resource type="Texture2D" uid="uid://bwyunis2wjnid" path="res://assets/art/ui/arrow L.png" id="4_g71c8"]
+[ext_resource type="Shader" uid="uid://drnyeyv5bbah6" path="res://assets/shaders/canv_outline.gdshader" id="5_ju3ge"]
+[ext_resource type="Texture2D" uid="uid://doi26fbcawvao" path="res://assets/art/ui/arrow R.png" id="5_s8kqv"]
 
-[node name="Titlescreen" type="Node2D" unique_id=117988690]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xq0r6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ju3ge"]
+bg_color = Color(0, 0, 0, 0.39215687)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.44291076, 0.44291076, 0.44291073, 0.8352941)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q10dm"]
+shader = ExtResource("5_ju3ge")
+shader_parameter/fill_color = Color(1, 1, 1, 1)
+shader_parameter/outline_color = Color(0.063, 0.043, 0.165, 1)
+shader_parameter/outline_size = 8.1630003877425
+shader_parameter/outline_copies = 32
+
+[sub_resource type="Animation" id="Animation_g71c8"]
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TitleHolder/TitleArt:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -6), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s8kqv"]
+_data = {
+&"title_idle": SubResource("Animation_g71c8")
+}
+
+[node name="Titlescreen" type="Control" unique_id=1833888934]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_ruqej")
 
-[node name="Button" type="Button" parent="." unique_id=359011196]
-offset_left = 524.0
-offset_top = 293.0
-offset_right = 565.0
-offset_bottom = 324.0
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2072765459]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -68.0
+offset_top = -124.0
+offset_right = 68.0
+offset_bottom = 124.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 13
+alignment = 1
+
+[node name="Playbtn" type="Button" parent="VBoxContainer" unique_id=359011196]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_s8kqv")
+theme_override_font_sizes/font_size = 37
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xq0r6")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_xq0r6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ju3ge")
 text = "Play"
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[node name="Optionsbtn" type="Button" parent="VBoxContainer" unique_id=1754267096]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_s8kqv")
+theme_override_font_sizes/font_size = 37
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xq0r6")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_xq0r6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ju3ge")
+text = "Options"
+
+[node name="Quitbtn" type="Button" parent="VBoxContainer" unique_id=1046282869]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_s8kqv")
+theme_override_font_sizes/font_size = 37
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xq0r6")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_xq0r6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ju3ge")
+text = "Quit"
+
+[node name="ArrowR" type="Sprite2D" parent="." unique_id=1583370525]
+position = Vector2(709, 324)
+scale = Vector2(0.24324322, 0.24324325)
+texture = ExtResource("4_g71c8")
+
+[node name="ArrowL" type="Sprite2D" parent="." unique_id=376840273]
+position = Vector2(434, 324)
+scale = Vector2(0.24324322, 0.24324325)
+texture = ExtResource("5_s8kqv")
+
+[node name="TitleHolder" type="Control" parent="." unique_id=974546105]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -152.0
+offset_top = 64.0
+offset_right = 152.0
+offset_bottom = 160.0
+grow_horizontal = 2
+mouse_filter = 2
+
+[node name="TitleArt" type="TextureRect" parent="TitleHolder" unique_id=1105449080]
+material = SubResource("ShaderMaterial_q10dm")
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("2_kmcnc")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=265475575]
+libraries/ = SubResource("AnimationLibrary_s8kqv")
+autoplay = &"title_idle"
+
+[connection signal="pressed" from="VBoxContainer/Playbtn" to="." method="_on_playbtn_pressed"]
+[connection signal="pressed" from="VBoxContainer/Optionsbtn" to="." method="_on_optionsbtn_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quitbtn" to="." method="_on_quitbtn_pressed"]

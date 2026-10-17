@@ -3,7 +3,7 @@ extends Node
 #menu manager handles loading menus
 
 var ONE = preload("res://scenes/levels/One.tscn")
-var TITLE = preload("res://scenes/menus/title/title.tscn")
+var TITLE = preload("res://scenes/levels/titlescreen.tscn")
 
 func load_scene(scene: PackedScene) -> void:
 	if !scene:
