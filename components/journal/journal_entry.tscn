@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://ddi1vnnw1x0ds"]
+
+[ext_resource type="Script" uid="uid://bqmacd3o3ignk" path="res://components/journal/journal_entry.gd" id="1_ubcqo"]
+[ext_resource type="Texture2D" uid="uid://duo0n3gevr4ri" path="res://components/journal/Sprites/photo vace.png" id="2_lqm2b"]
+
+[node name="JournalEntry" type="Control" unique_id=1902699752]
+custom_minimum_size = Vector2(236, 270)
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+script = ExtResource("1_ubcqo")
+
+[node name="Photo" type="TextureRect" parent="." unique_id=1840009920]
+layout_mode = 0
+offset_right = 236.0
+offset_bottom = 230.0
+mouse_filter = 2
+texture = ExtResource("2_lqm2b")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="NameLabel" type="Label" parent="." unique_id=323724036]
+layout_mode = 0
+offset_top = 232.0
+offset_right = 236.0
+offset_bottom = 270.0
+theme_override_font_sizes/font_size = 26
+text = "Name"
+horizontal_alignment = 1
+vertical_alignment = 1

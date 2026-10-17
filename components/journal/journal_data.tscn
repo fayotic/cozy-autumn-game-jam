@@ -1,50 +1,45 @@
 [gd_scene format=3 uid="uid://48qyf3evns1"]
 
 [ext_resource type="Texture2D" uid="uid://drikhn3hpvdqc" path="res://components/journal/Sprites/journal randy id.png" id="1_n8nsu"]
-[ext_resource type="Texture2D" uid="uid://xxqkx2k0opg2" path="res://components/journal/Sprites/photo gun.png" id="2_8fon1"]
-[ext_resource type="Texture2D" uid="uid://dygs7no5ox5pp" path="res://components/journal/Sprites/photo lamp.png" id="3_4jksr"]
-[ext_resource type="Texture2D" uid="uid://miwxewhcbs7x" path="res://components/journal/Sprites/photo table.png" id="4_sl4pb"]
-[ext_resource type="Texture2D" uid="uid://duo0n3gevr4ri" path="res://components/journal/Sprites/photo vace.png" id="5_kyrog"]
+[ext_resource type="Script" uid="uid://choixo4qp253j" path="res://components/journal/journal_data.gd" id="1_o17uq"]
 
-[node name="JournalData" type="Node2D" unique_id=2073480912]
+[node name="JournalData" type="Control" unique_id=2139913885]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+script = ExtResource("1_o17uq")
 
-[node name="RandyItems" type="Node2D" parent="." unique_id=1330678453]
-z_index = 1
-position = Vector2(252, 173)
+[node name="NameLabel" type="Label" parent="." unique_id=1274435352]
+layout_mode = 0
+offset_left = 296.0
+offset_top = 195.0
+offset_right = 932.0
+offset_bottom = 275.0
+theme_override_font_sizes/font_size = 60
+text = "Name"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="RandyPlayerCard" type="Sprite2D" parent="RandyItems" unique_id=470116194]
-position = Vector2(146, 115)
-scale = Vector2(0.35, 0.35)
+[node name="PlayerCard" type="TextureRect" parent="." unique_id=211403526]
+layout_mode = 0
+offset_left = 296.0
+offset_top = 285.0
+offset_right = 932.0
+offset_bottom = 667.0
+mouse_filter = 2
 texture = ExtResource("1_n8nsu")
+expand_mode = 1
+stretch_mode = 5
 
-[node name="Gun" type="Sprite2D" parent="RandyItems" unique_id=1554339122]
-visible = false
-position = Vector2(405, 101.999985)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("2_8fon1")
-
-[node name="Lamp" type="Sprite2D" parent="RandyItems" unique_id=1699326718]
-visible = false
-position = Vector2(553, 101.999985)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("3_4jksr")
-
-[node name="Table" type="Sprite2D" parent="RandyItems" unique_id=1967678372]
-visible = false
-position = Vector2(404, 231)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("4_sl4pb")
-
-[node name="Vase" type="Sprite2D" parent="RandyItems" unique_id=1174757695]
-visible = false
-position = Vector2(554, 231)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("5_kyrog")
-
-[node name="GregoryItems" type="Node2D" parent="." unique_id=261524898]
-
-[node name="GregoryPlayerCard" type="Sprite2D" parent="GregoryItems" unique_id=629142939]
-
-[node name="StevenItems" type="Node2D" parent="." unique_id=453691843]
-
-[node name="StevenPlayerCard" type="Sprite2D" parent="StevenItems" unique_id=1656785475]
+[node name="EntryGrid" type="GridContainer" parent="." unique_id=1255966765]
+layout_mode = 0
+offset_left = 1014.0
+offset_top = 335.0
+offset_right = 1546.0
+offset_bottom = 903.0
+mouse_filter = 2
+theme_override_constants/h_separation = 60
+theme_override_constants/v_separation = 28
+columns = 2
